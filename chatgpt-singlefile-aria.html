@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vishnu Sahasranama</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vishnu Sahasranama</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
   <main id="app" class="min-h-screen container mx-auto p-4 md:p-8"></main>
   <script src="./data.js"></script>
@@ -17,7 +15,8 @@
 
     function word(display, meaning, n) {
       const c = colors[idx++ % colors.length];
-      return `<span class="relative inline-block group"><span class="font-bold" style="color:${c}">${display}</span><span class="absolute -top-2 translate-y-[-100%] left-1/2 -translate-x-1/2 w-[20rem] md:w-[24rem] max-w-[28rem] bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600 text-sm rounded-md px-3 py-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition pointer-events-none whitespace-normal">${meaning} (${n})</span></span>`;
+      const esc = (s) => s.replaceAll('"', '&quot;').replaceAll('&', '&amp;');
+      return `<abbr title="${esc(meaning)} (${n})" class="font-bold" style="color:${c}; cursor:help; text-decoration:none;">${display}</abbr>`;
     }
 
     function render() {
@@ -43,5 +42,4 @@
     document.addEventListener('DOMContentLoaded', render);
   </script>
 </body>
-
 </html>
