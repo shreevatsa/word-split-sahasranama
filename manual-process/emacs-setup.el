@@ -1,4 +1,6 @@
+;; Preserve spaces when breaking lines.
 (electric-indent-local-mode -1)
+
 (defun my-move-numbered-line ()
   "Find the next line starting with a number, cut it, and paste it here after an '='.
 If no such line is found, just insert '='."
@@ -19,7 +21,5 @@ If no such line is found, just insert '='."
           (yank))
       ;; If no numbered line was found, just insert the character.
       (insert "="))))
+
 (global-set-key (kbd "=") #'my-move-numbered-line)
-
-
-
