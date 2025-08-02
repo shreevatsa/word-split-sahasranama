@@ -31,42 +31,57 @@
 
     // Position tooltip using fixed viewport coordinates to avoid clipping.
     function positionTooltipFixed(tip, anchorRect) {
-      const margin = 8; // px
+      const margin = (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 12 : 8; // a bit more room on mobile
+      // Use visual viewport on mobile to account for zoom/pinch and card-width viewport
+      const vv = window.visualViewport;
+      const vWidth  = vv ? vv.width  : window.innerWidth;
+      const vHeight = vv ? vv.height : window.innerHeight;
+
       tip.style.position = 'fixed';
-      tip.style.maxWidth = Math.min(640, window.innerWidth - margin * 2) + 'px';
-      tip.classList.remove('opacity-0', 'invisible');
+      tip.style.maxWidth = Math.min(640, vWidth - margin*2) + 'px';
+      tip.classList.remove('opacity-0','invisible');
+
+      // Measure after making visible
       const rect = tip.getBoundingClientRect();
-      let left = anchorRect.left + anchorRect.width / 2 - rect.width / 2;
-      let top = anchorRect.top - rect.height - margin;
-      left = Math.max(margin, Math.min(left, window.innerWidth - rect.width - margin));
+
+      // Default: above, centered
+      let left = anchorRect.left + anchorRect.width/2 - rect.width/2;
+      let top  = anchorRect.top - rect.height - margin;
+
+      // Horizontal clamp within visual viewport
+      left = Math.max(margin, Math.min(left, vWidth - rect.width - margin));
+
+      // If not enough room above, place below; also keep within bottom edge
       if (top < margin) top = anchorRect.bottom + margin;
+      if (top + rect.height > vHeight - margin) top = Math.max(margin, vHeight - rect.height - margin);
+
       tip.style.left = left + 'px';
       tip.style.top = top + 'px';
       tip.style.transform = 'none';
     }
     function showTooltip(wrapper) {
       const tip = wrapper.querySelector('.tooltip-text');
-      if (!tip) return;
+      if(!tip) return;
       const a = wrapper.getBoundingClientRect();
       positionTooltipFixed(tip, a);
       wrapper.dataset.open = '1';
     }
-    function hideTooltip(wrapper) {
+    function hideTooltip(wrapper){
       const tip = wrapper.querySelector('.tooltip-text');
-      if (!tip) return;
-      tip.classList.add('opacity-0', 'invisible');
+      if(!tip) return;
+      tip.classList.add('opacity-0','invisible');
       tip.style.left = tip.style.top = tip.style.transform = tip.style.position = '';
       delete wrapper.dataset.open;
     }
 
-    function attachHandlers() {
+    function attachHandlers(){
       // Delegate for performance (works for all words)
       const app = document.getElementById('app');
       app.addEventListener('mouseenter', e => {
         const w = e.target.closest('.tooltip-wrapper');
-        if (!w) return;
+        if(!w) return;
         if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
-        requestAnimationFrame(() => { requestAnimationFrame(() => { showTooltip(w); currentOpen = w; }); });
+        requestAnimationFrame(()=>{ requestAnimationFrame(()=> { showTooltip(w); currentOpen = w; }); });
       }, true);
       app.addEventListener('mousemove', e => {
         const w = e.target.closest('.tooltip-wrapper');
@@ -78,8 +93,6 @@
           hideTooltip(currentOpen);
           currentOpen = null;
         }
-        if (!w) return;
-        showTooltip(w);
       });
       app.addEventListener('mouseleave', e => {
         if (currentOpen) { hideTooltip(currentOpen); currentOpen = null; }
@@ -87,16 +100,16 @@
       // Touch/click
       app.addEventListener('touchstart', e => {
         const w = e.target.closest('.tooltip-wrapper');
-        if (!w) return; e.stopPropagation();
+        if(!w) return; e.stopPropagation();
         if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
         showTooltip(w); currentOpen = w;
-      }, { passive: true });
+      }, {passive:true});
       app.addEventListener('click', e => {
         const w = e.target.closest('.tooltip-wrapper');
-        if (!w) return; e.stopPropagation();
+        if(!w) return; e.stopPropagation();
         if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
         showTooltip(w); currentOpen = w;
-        if (!w) return; e.stopPropagation(); showTooltip(w);
+        if(!w) return; e.stopPropagation(); showTooltip(w);
       });
       document.addEventListener('click', () => {
         document.querySelectorAll('.tooltip-wrapper').forEach(hideTooltip);
@@ -105,14 +118,23 @@
       document.addEventListener('touchstart', () => {
         document.querySelectorAll('.tooltip-wrapper').forEach(hideTooltip);
         currentOpen = null;
-      }, { passive: true });
+      }, {passive:true});
       window.addEventListener('resize', () => {
         document.querySelectorAll('.tooltip-wrapper').forEach(hideTooltip);
         currentOpen = null;
       });
+      // On mobile zoom/pan, visual viewport changes; update/open tooltip position
+      if (window.visualViewport) {
+        visualViewport.addEventListener('resize', () => {
+          if (currentOpen) showTooltip(currentOpen);
+        });
+        visualViewport.addEventListener('scroll', () => {
+          if (currentOpen) showTooltip(currentOpen);
+        });
+      }
     }
 
-    function render() {
+    function render(){
       idx = 0;
       const cards = data.map(s => {
         const lines = s.lines.map(line => line.map(part => Array.isArray(part)
@@ -140,5 +162,4 @@
     document.addEventListener('DOMContentLoaded', render);
   </script>
 </body>
-
 </html>
