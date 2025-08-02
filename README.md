@@ -1,0 +1,3 @@
+- Edit slokas.txt using the elisp in slokas-prefix.el
+- Run uv run sloka_parser_flexible_format.py slokas.txt > data.js
+- Load the .html file.
