@@ -352,7 +352,7 @@ const data = [
   },
   {
     "dev": "अप्रमेयो हृषीकेशः पद्मनाभोऽमरप्रभुः ।  \nविश्वकर्मा मनुस्त्वष्टा स्थविष्ठः स्थविरो ध्रुवः ॥ ६॥",
-    "translitCanonical": "aprameyō hṛṣīkeśaḥ padmanābho’maraprabhuḥ,  \nviśvakarmā manustvaṣṭā sthaviṣṭhaḥ sthaviro dhruvaḥ. (6)",
+    "translitCanonical": "aprameyō hṛṣīkeśaḥ padmanābho'maraprabhuḥ,  \nviśvakarmā manustvaṣṭā sthaviṣṭhaḥ sthaviro dhruvaḥ. (6)",
     "lines": [
       [
         [
@@ -366,12 +366,12 @@ const data = [
           47
         ],
         [
-          " padmanābho’",
+          " padmanābho",
           "Padmanābhaḥ: He in whose navel (nabhi) the lotus (padma), the source of the universe, stands.",
           48
         ],
         [
-          "maraprabhuḥ",
+          "'maraprabhuḥ",
           "Amara-prabhuḥ: The master of Amaras or the deathless ones, i.e. the Devas.",
           49
         ],
@@ -6606,14 +6606,15 @@ const data = [
   },
   {
     "dev": "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥ ३३॥",
-    "translitCanonical": "kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,\nkaromi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)Whatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.",
+    "translitCanonical": "kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,\nkaromi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)\nWhatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.",
     "lines": [
       [
         "kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,"
       ],
       [
-        "karomi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)",
-        "",
+        "karomi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)"
+      ],
+      [
         "Whatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.",
         ""
       ]
