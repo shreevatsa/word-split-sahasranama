@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vishnu Sahasranama</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+  <main id="app" class="min-h-screen container mx-auto p-4 md:p-8"></main>
+  <script src="./data.js"></script>
+  <script>
+    const colors = ["#3b82f6", "#ef4444", "#10b981", "#f97316", "#8b5cf6", "#d946ef", "#14b8a6", "#f59e0b", "#6366f1", "#ec4899"];
+    let idx = 0; // global color index across tokens
+
+    function word(display, meaning, n) {
+      const c = colors[idx++ % colors.length];
+      return `<span class="relative inline-block group"><span class="font-bold" style="color:${c}">${display}</span><span class="absolute -top-2 translate-y-[-100%] left-1/2 -translate-x-1/2 w-[20rem] md:w-[24rem] max-w-[28rem] bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600 text-sm rounded-md px-3 py-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition pointer-events-none whitespace-normal">${meaning} (${n})</span></span>`;
+    }
+
+    function render() {
+      idx = 0; // reset color cycling each render
+      const cards = data.map(s => {
+        const lines = s.lines.map(line => line.map(part => Array.isArray(part) ? word(part[0], part[1], part[2]) : `<span>${part}</span>`).join("")).join("<br>");
+        return `<section class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow rounded-xl p-6 md:p-8 mb-6">
+  <p class="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-serif whitespace-pre-line leading-relaxed" lang="sa">${s.dev}</p>
+  <div class="mt-3 text-lg md:text-xl text-gray-600 dark:text-gray-400 font-sans whitespace-pre-wrap leading-relaxed" lang="sa-Latn">${lines}</div>
+</section>`;
+      }).join("");
+
+      document.getElementById('app').innerHTML = `
+    <header class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold">Vishnu Sahasranama</h1>
+      <p class="text-gray-600 dark:text-gray-400">Hover on or tap coloured segments for meanings.</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Everything below is based on the text and translation from <a href="https://www.swami-krishnananda.org/vishnu/vishnu_1.html">the website of Swami Krishnananda</a>.</p> 
+    </header>
+    ${cards}
+    <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8"><p>Single-file, Tailwind CDN, auto color cycling</p><p>Source code at &lt;...&gt;</p></footer>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+
+</html>
