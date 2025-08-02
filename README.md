@@ -11,7 +11,7 @@ How this was generated:
 - Manually went over the file `slokas.txt` using the `=` character set up in Emacs above. See video file `editing-sample.mov` for a video recording.
 - Now `data.js` is generated from this file (see `Makefile`) using the Python script.
 - The file `template.html` incorporates `data.js`.
-
+- The result of running `make` is a single file `index.html` with all dependencies (mainly the entirety of Tailwind (sorry!) for CSS, and `data.js` for the data) inlined.
 
 ---
 
