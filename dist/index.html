@@ -6867,10 +6867,18 @@
         <header class="text-center mb-8">
           <h1 class="text-3xl md:text-4xl font-bold">Vishnu Sahasranama</h1>
           <p class="text-gray-600 dark:text-gray-400">Hover on or tap coloured segments for meanings.</p>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Everything below is based on the text and translation from <a href="https://www.swami-krishnananda.org/vishnu/vishnu_1.html">the website of Swami Krishnananda</a>.</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Everything below is based on the text and translation from 
+            <a
+              href="https://www.swami-krishnananda.org/vishnu/vishnu_1.html"
+              class="text-blue-600 underline underline-offset-2 hover:decoration-2 hover:text-blue-700
+                     visited:text-purple-600 focus-visible:outline focus-visible:outline-2
+                     focus-visible:outline-offset-2 focus-visible:outline-current
+                     dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
+            >the website of Swami Krishnananda</a>.
+          </p>
         </header>
         ${cards}
-        <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8"><p>Single-file, Tailwind CDN, auto color cycling</p><p>Source code at &lt;...&gt;</p></footer>`;
+        <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8"><p>Single-file index.html with inlined dependencies. Source code at <a href="https://github.com/shreevatsa/word-split-sahasranama">https://github.com/shreevatsa/word-split-sahasranama</a>.</p></footer>`;
 
       attachHandlers();
     }
