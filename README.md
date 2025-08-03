@@ -8,12 +8,12 @@ The data is in `slokas.txt`, and the rest of the files transform it into `index.
 
 ```mermaid
 flowchart LR
-    A[slokas.txt] --> B{slokas_parse.py}
-    B --> C[data.js]
-    D[template.html] --> E{"(cog)"}
+    A(slokas.txt)--> B[/slokas_parse.py/]
+    B --> C(data.js)
+    D(template.html) --> E[/"(cog)"/]
     C --> E
-    T["(Tailwind CSS)"] --> E
-    E --> F[index.html]
+    T("(Tailwind CSS)") --> E
+    E --> F(index.html)
     
     style A fill:#e1f5fe
     style D fill:#e1f5fe
