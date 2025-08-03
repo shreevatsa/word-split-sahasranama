@@ -8,7 +8,7 @@ The data is in `slokas.txt`, and the rest of the files transform it into `index.
 
 ```mermaid
 flowchart LR
-    A[slokas.txt] --> B{b.py}
+    A[slokas.txt] --> B{slokas_parse.py}
     B --> C[data.js]
     D[template.html] --> E{"(cog)"}
     C --> E
@@ -20,7 +20,8 @@ flowchart LR
     style F fill:#fff3e0
     %% style C fill:#e8f5e8
     style C fill:#fff3e0
-    style B fill:#f3e5f5
+    %% style B fill:#f3e5f5
+    style B fill:#e1f5fe
 ```
 
 Specifically (see `Makefile`):
