@@ -15,13 +15,54 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-  <main id="app" class="min-h-screen container mx-auto p-4 md:p-8"></main>
+  <main id="app" class="min-h-screen container mx-auto p-4 md:p-8">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold">Vishnu Sahasranama</h1>
+      <p class="text-gray-600 dark:text-gray-400">Hover on or tap coloured segments for meanings.</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+        Everything below is based on the text and translation from
+        <a
+          href="https://www.swami-krishnananda.org/vishnu/vishnu_1.html"
+          class="text-blue-600 underline underline-offset-2 hover:decoration-2 hover:text-blue-700
+                 visited:text-purple-600 focus-visible:outline focus-visible:outline-2
+                 focus-visible:outline-offset-2 focus-visible:outline-current
+                 dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
+        >the website of Swami Krishnananda</a>.
+      </p>
+    </header>
+
+    <!-- Cards get injected here; header/footer remain inside <main> -->
+    <div id="cards-root"></div>
+
+    <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
+      <p>
+        Single HTML file with inlined dependencies. Source code at
+        <a
+          href="https://github.com/shreevatsa/word-split-sahasranama"
+          class="text-blue-600 underline underline-offset-2 hover:decoration-2 hover:text-blue-700
+                 visited:text-purple-600 focus-visible:outline focus-visible:outline-2
+                 focus-visible:outline-offset-2 focus-visible:outline-current
+                 dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
+        >https://github.com/shreevatsa/word-split-sahasranama</a>.
+      </p>
+    </footer>
+  </main>
+
+  <!-- One persistent tooltip (outside #app so we never overwrite it) -->
+  <div id="word-meaning-tip"
+       role="tooltip"
+       aria-hidden="true"
+       hidden
+       class="fixed bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600
+              text-sm rounded-md px-3 py-2 shadow-lg pointer-events-none whitespace-normal
+              w-max min-w-[12rem] break-words z-50"></div>
 
   <script>
     /* [[[cog
     print(open('data.js').read(), end='')
     ]]] */
     // [[[end]]]
+
     // Color cycle
     const colors = ["#3b82f6", "#ef4444", "#10b981", "#f97316", "#8b5cf6", "#d946ef", "#14b8a6", "#f59e0b", "#6366f1", "#ec4899"];
     let idx = 0;
@@ -29,26 +70,18 @@
     // Returns the HTML for a coloured word (`display`) with a floating tooltip (`meaning` followed by `n`).
     function word(display, meaning, n) {
       const c = colors[idx++ % colors.length];
-      // Escaping for HTML contexts requires escaping only < and "ambiguous ampersands": https://html.spec.whatwg.org/multipage/parsing.html#tokenization
+      // Text node escape (& and <): https://html.spec.whatwg.org/#data-state
       const escHtml = s => String(s).replace(/[&<]/g, m => ({ '&': '&amp;', '<': '&lt;' }[m]));
-      // Escaping for double-quoted HTML attribute contexts requires escaping only quotes and ampersands: https://html.spec.whatwg.org/multipage/parsing.html#attribute-value-(double-quoted)-state
+      // Double-quoted attribute escape (& and "): https://html.spec.whatwg.org/#attribute-value-(double-quoted)-state
       const escAttr = s => String(s).replace(/[&"]/g, m => ({ '&': '&amp;', '"': '&quot;' }[m]));
       // Keep strictly single-line, as container uses `whitespace-pre-wrap`
-      return `<span class="word font-bold cursor-pointer" tabindex="0" style="color:${c}" data-meaning="${escAttr(meaning)}" data-n="${n}">${escHtml(display)}</span>`;
+      return `<span class="word font-bold cursor-pointer" tabindex="0" style="color:${c}"
+                data-meaning="${escAttr(meaning)}" data-n="${n}">${escHtml(display)}</span>`;
     }
 
     let tip = null;
     let current = null; // currently-open word element
-
-    function createTooltip() {
-      tip = document.createElement('div');
-      tip.id = "word-meaning-tip";
-      tip.setAttribute('role', 'tooltip');
-      tip.className = "fixed bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600 text-sm rounded-md px-3 py-2 shadow-lg pointer-events-none whitespace-normal w-max min-w-[12rem] break-words z-50";
-      tip.style.maxWidth = "min(40rem, calc(100vw - 16px))";
-      tip.hidden = true; // show/hide with .hidden
-      document.body.appendChild(tip);
-    }
+    let raf = 0;
 
     function positionTo(el) {
       const margin = (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 12 : 8;
@@ -56,9 +89,12 @@
       // Visual viewport-aware fixed positioning (handles zoom/pan on mobile)
       const vv = window.visualViewport;
       const vx = vv ? vv.offsetLeft : 0;
-      const vy = vv ? vv.offsetTop : 0;
-      const vw = vv ? vv.width : window.innerWidth;
-      const vh = vv ? vv.height : window.innerHeight;
+      const vy = vv ? vv.offsetTop  : 0;
+      const vw = vv ? vv.width      : window.innerWidth;
+      const vh = vv ? vv.height     : window.innerHeight;
+
+      // Keep width responsive to current viewport/margin
+      tip.style.maxWidth = Math.min(640, vw - margin * 2) + 'px';
 
       // Show to measure
       tip.hidden = false;
@@ -67,17 +103,15 @@
 
       // Try above centered
       let left = a.left + a.width / 2 - r.width / 2;
-      let top = a.top - r.height - margin;
+      let top  = a.top  - r.height - margin;
 
-      // Clamp horizontally
+      // Clamp horizontally; if no room above, go below; clamp to bottom
       left = Math.max(margin, Math.min(left, vw - r.width - margin));
-
-      // If no room above, go below; clamp to bottom
       if (top < margin) top = a.bottom + margin;
       if (top + r.height > vh - margin) top = Math.max(margin, vh - r.height - margin);
 
       tip.style.left = (vx + left) + 'px';
-      tip.style.top = (vy + top) + 'px';
+      tip.style.top  = (vy + top)  + 'px';
     }
 
     function openTip(w) {
@@ -96,6 +130,12 @@
       current = null;
     }
 
+    const reflowToCurrent = () => {
+      if (!current) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => positionTo(current));
+    };
+
     function attachHandlers() {
       const app = document.getElementById('app');
 
@@ -108,9 +148,7 @@
 
       // Close when pointer leaves the current word or the app entirely
       app.addEventListener('pointerout', e => {
-        // If leaving the #app entirely
         if (!e.currentTarget.contains(e.relatedTarget)) { hideTip(); return; }
-        // If leaving the current word
         const w = e.target.closest('.word');
         if (w && w === current && !w.contains(e.relatedTarget)) hideTip();
       });
@@ -126,20 +164,20 @@
       // Click/tap anywhere else to close
       document.addEventListener('pointerdown', hideTip);
 
-      // Keep position in sync when things move
-      addEventListener('scroll', () => current && positionTo(current), { capture: true, passive: true });
-      addEventListener('resize', () => current && positionTo(current));
+      // Keep position in sync when things move (throttled)
+      addEventListener('scroll', reflowToCurrent, { capture: true, passive: true });
+      addEventListener('resize', reflowToCurrent);
       if (window.visualViewport) {
-        visualViewport.addEventListener('resize', () => current && positionTo(current));
-        visualViewport.addEventListener('scroll', () => current && positionTo(current));
+        visualViewport.addEventListener('resize', reflowToCurrent);
+        visualViewport.addEventListener('scroll',  reflowToCurrent);
       }
 
-      // Keyboard a11y
-      app.addEventListener('focusin', e => {
-        const w = e.target.closest('.word'); if (w) openTip(w);
-      });
-      app.addEventListener('focusout', () => hideTip());
+      // Keyboard a11y + page lifecycle niceties
+      app.addEventListener('focusin', e => { const w = e.target.closest('.word'); if (w) openTip(w); });
+      app.addEventListener('focusout', hideTip);
       app.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
+      addEventListener('blur', hideTip);
+      document.addEventListener('visibilitychange', () => { if (document.hidden) hideTip(); });
     }
 
     function render() {
@@ -155,32 +193,11 @@
           </section>`;
       }).join('');
 
-      document.getElementById('app').innerHTML = `
-        <header class="text-center mb-8">
-          <h1 class="text-3xl md:text-4xl font-bold">Vishnu Sahasranama</h1>
-          <p class="text-gray-600 dark:text-gray-400">Hover on or tap coloured segments for meanings.</p>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Everything below is based on the text and translation from 
-            <a
-              href="https://www.swami-krishnananda.org/vishnu/vishnu_1.html"
-              class="text-blue-600 underline underline-offset-2 hover:decoration-2 hover:text-blue-700
-                     visited:text-purple-600 focus-visible:outline focus-visible:outline-2
-                     focus-visible:outline-offset-2 focus-visible:outline-current
-                     dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
-            >the website of Swami Krishnananda</a>.
-          </p>
-        </header>
-        ${cards}
-        <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8"><p>Single HTML file with inlined dependencies. Source code at <a
-              href="https://github.com/shreevatsa/word-split-sahasranama"
-              class="text-blue-600 underline underline-offset-2 hover:decoration-2 hover:text-blue-700
-                     visited:text-purple-600 focus-visible:outline focus-visible:outline-2
-                     focus-visible:outline-offset-2 focus-visible:outline-current
-                     dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
-            >https://github.com/shreevatsa/word-split-sahasranama</a>.</p></footer>`;
+      document.getElementById('cards-root').innerHTML = cards;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      createTooltip();
+      tip = document.getElementById('word-meaning-tip');
       render();
       attachHandlers();
     });
