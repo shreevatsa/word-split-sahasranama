@@ -32,7 +32,7 @@
       </p>
     </header>
 
-    <!-- Cards get injected here; header/footer remain inside <main> -->
+    <!-- Cards get injected here; we also delegate events from this element -->
     <div id="cards-root"></div>
 
     <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
@@ -6687,49 +6687,56 @@
     ];
     // [[[end]]]
 
-    // Color cycle
+    // --- constants / state ---
     const colors = ["#3b82f6", "#ef4444", "#10b981", "#f97316", "#8b5cf6", "#d946ef", "#14b8a6", "#f59e0b", "#6366f1", "#ec4899"];
-    let idx = 0;
+    const tip = document.getElementById('word-meaning-tip');
+    const app = document.getElementById('cards-root'); // single element for injection + delegation
+    const COARSE_POINTER = window.matchMedia && matchMedia('(pointer: coarse)').matches;
+    let idx = 0, current = null, raf = 0;
 
-    // Returns the HTML for a coloured word (`display`) with a floating tooltip (`meaning` followed by `n`).
+    // --- rendering ---
     function word(display, meaning, n) {
       const c = colors[idx++ % colors.length];
-      // Text node escape (& and <): https://html.spec.whatwg.org/#data-state
       const escHtml = s => String(s).replace(/[&<]/g, m => ({ '&': '&amp;', '<': '&lt;' }[m]));
-      // Double-quoted attribute escape (& and "): https://html.spec.whatwg.org/#attribute-value-(double-quoted)-state
       const escAttr = s => String(s).replace(/[&"]/g, m => ({ '&': '&amp;', '"': '&quot;' }[m]));
       // Keep strictly single-line, as container uses `whitespace-pre-wrap`
       return `<span class="word font-bold cursor-pointer" tabindex="0" style="color:${c}"
                 data-meaning="${escAttr(meaning)}" data-n="${n}">${escHtml(display)}</span>`;
     }
 
-    let tip = null;
-    let current = null; // currently-open word element
-    let raf = 0;
+    function render() {
+      idx = 0;
+      const cards = data.map(s => {
+        const lines = s.lines.map(line => line.map(part => Array.isArray(part)
+          ? word(part[0], part[1], part[2])
+          : `<span>${part}</span>`).join('')).join('<br>');
+        return `
+          <section class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow rounded-xl p-6 md:p-8 mb-6">
+            <p class="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-serif whitespace-pre-line leading-relaxed" lang="sa">${s.dev}</p>
+            <div class="mt-3 text-lg md:text-xl text-gray-600 dark:text-gray-400 font-sans whitespace-pre-wrap leading-relaxed" lang="sa-Latn">${lines}</div>
+          </section>`;
+      }).join('');
+      app.innerHTML = cards;
+    }
 
+    // --- tooltip logic ---
     function positionTo(el) {
-      const margin = (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 12 : 8;
-
-      // Visual viewport-aware fixed positioning (handles zoom/pan on mobile)
+      const margin = COARSE_POINTER ? 12 : 8;
       const vv = window.visualViewport;
       const vx = vv ? vv.offsetLeft : 0;
       const vy = vv ? vv.offsetTop  : 0;
       const vw = vv ? vv.width      : window.innerWidth;
       const vh = vv ? vv.height     : window.innerHeight;
 
-      // Keep width responsive to current viewport/margin
       tip.style.maxWidth = Math.min(640, vw - margin * 2) + 'px';
+      tip.hidden = false; // show to measure
 
-      // Show to measure
-      tip.hidden = false;
       const r = tip.getBoundingClientRect();
       const a = el.getBoundingClientRect();
 
-      // Try above centered
       let left = a.left + a.width / 2 - r.width / 2;
       let top  = a.top  - r.height - margin;
 
-      // Clamp horizontally; if no room above, go below; clamp to bottom
       left = Math.max(margin, Math.min(left, vw - r.width - margin));
       if (top < margin) top = a.bottom + margin;
       if (top + r.height > vh - margin) top = Math.max(margin, vh - r.height - margin);
@@ -6760,71 +6767,45 @@
       raf = requestAnimationFrame(() => positionTo(current));
     };
 
-    function attachHandlers() {
-      const app = document.getElementById('app');
-
-      // Open on hover
-      app.addEventListener('pointerover', e => {
-        const w = e.target.closest('.word');
-        if (!w) return;
-        if (current !== w) openTip(w);
-      });
-
-      // Close when pointer leaves the current word or the app entirely
-      app.addEventListener('pointerout', e => {
-        if (!e.currentTarget.contains(e.relatedTarget)) { hideTip(); return; }
-        const w = e.target.closest('.word');
-        if (w && w === current && !w.contains(e.relatedTarget)) hideTip();
-      });
-
-      // Tap/click to open (and stop the document handler from immediately closing it)
-      app.addEventListener('pointerdown', e => {
-        const w = e.target.closest('.word');
-        if (!w) return;
-        e.stopPropagation();
-        openTip(w);
-      });
-
-      // Click/tap anywhere else to close
-      document.addEventListener('pointerdown', hideTip);
-
-      // Keep position in sync when things move (throttled)
-      addEventListener('scroll', reflowToCurrent, { capture: true, passive: true });
-      addEventListener('resize', reflowToCurrent);
-      if (window.visualViewport) {
-        visualViewport.addEventListener('resize', reflowToCurrent);
-        visualViewport.addEventListener('scroll',  reflowToCurrent);
-      }
-
-      // Keyboard a11y + page lifecycle niceties
-      app.addEventListener('focusin', e => { const w = e.target.closest('.word'); if (w) openTip(w); });
-      app.addEventListener('focusout', hideTip);
-      app.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
-      addEventListener('blur', hideTip);
-      document.addEventListener('visibilitychange', () => { if (document.hidden) hideTip(); });
-    }
-
-    function render() {
-      idx = 0;
-      const cards = data.map(s => {
-        const lines = s.lines.map(line => line.map(part => Array.isArray(part)
-          ? word(part[0], part[1], part[2])
-          : `<span>${part}</span>`).join('')).join('<br>');
-        return `
-          <section class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow rounded-xl p-6 md:p-8 mb-6">
-            <p class="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-serif whitespace-pre-line leading-relaxed" lang="sa">${s.dev}</p>
-            <div class="mt-3 text-lg md:text-xl text-gray-600 dark:text-gray-400 font-sans whitespace-pre-wrap leading-relaxed" lang="sa-Latn">${lines}</div>
-          </section>`;
-      }).join('');
-
-      document.getElementById('cards-root').innerHTML = cards;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      tip = document.getElementById('word-meaning-tip');
-      render();
-      attachHandlers();
+    // --- events (delegate from #cards-root) ---
+    app.addEventListener('pointerover', e => {
+      const w = e.target.closest('.word');
+      if (w && current !== w) openTip(w);
     });
+
+    app.addEventListener('pointerout', e => {
+      if (!e.currentTarget.contains(e.relatedTarget)) { hideTip(); return; }
+      const w = e.target.closest('.word');
+      if (w && w === current && !w.contains(e.relatedTarget)) hideTip();
+    });
+
+    app.addEventListener('pointerdown', e => {
+      const w = e.target.closest('.word');
+      if (!w) return;
+      e.stopPropagation();
+      openTip(w);
+    });
+
+    document.addEventListener('pointerdown', hideTip);
+
+    addEventListener('scroll', reflowToCurrent, { capture: true, passive: true });
+    addEventListener('resize', reflowToCurrent);
+    if (window.visualViewport) {
+      visualViewport.addEventListener('resize', reflowToCurrent);
+      visualViewport.addEventListener('scroll',  reflowToCurrent);
+    }
+
+    app.addEventListener('focusin', e => { const w = e.target.closest('.word'); if (w) openTip(w); });
+    app.addEventListener('focusout', hideTip);
+
+    // Esc should work even when the focus is outside cards
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
+
+    addEventListener('blur', hideTip);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) hideTip(); });
+
+    // Render immediately (script is after DOM)
+    render();
   </script>
 </body>
 
