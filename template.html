@@ -25,122 +25,121 @@
     // Color cycle
     const colors = ["#3b82f6", "#ef4444", "#10b981", "#f97316", "#8b5cf6", "#d946ef", "#14b8a6", "#f59e0b", "#6366f1", "#ec4899"];
     let idx = 0;
-    let currentOpen = null; // keep at most one tooltip visible
 
     // Returns the HTML for a coloured word (`display`) with a floating tooltip (`meaning` followed by `n`).
     function word(display, meaning, n) {
       const c = colors[idx++ % colors.length];
-      // Escaping for HTML contexts requires escaping only < and "ambiguous ampersands".
-      const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-      // IMPORTANT: no newlines/extra spaces inside the returned HTML — because the
-      // container uses `whitespace-pre-wrap`, any whitespace in the template would
-      // render as visible line breaks. So keep this strictly single-line.
-      return `<span class="relative inline-block tooltip-wrapper"><span class="font-bold" style="color:${c};cursor:pointer;">${display}</span><span class="tooltip-text absolute -top-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600 text-sm rounded-md px-3 py-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition pointer-events-none whitespace-normal w-max min-w-[12rem] break-words z-50" style="max-width:min(40rem,calc(100vw - 16px));">${esc(meaning)} (${n})</span></span>`;
+      // Escaping for HTML contexts requires escaping only < and "ambiguous ampersands": https://html.spec.whatwg.org/multipage/parsing.html#tokenization
+      const escHtml = s => String(s).replace(/[&<]/g, m => ({ '&': '&amp;', '<': '&lt;' }[m]));
+      // Escaping for double-quoted HTML attribute contexts requires escaping only quotes and ampersands: https://html.spec.whatwg.org/multipage/parsing.html#attribute-value-(double-quoted)-state
+      const escAttr = s => String(s).replace(/[&"]/g, m => ({ '&': '&amp;', '"': '&quot;' }[m]));
+      // Keep strictly single-line, as container uses `whitespace-pre-wrap`
+      return `<span class="word font-bold cursor-pointer" tabindex="0" style="color:${c}" data-meaning="${escAttr(meaning)}" data-n="${n}">${escHtml(display)}</span>`;
     }
 
-    // Position tooltip using fixed viewport coordinates to avoid clipping.
-    function positionTooltipFixed(tip, anchorRect) {
-      const margin = (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 12 : 8; // a bit more room on mobile
-      // Use visual viewport on mobile to account for zoom/pinch and card-width viewport
+    let tip = null;
+    let current = null; // currently-open word element
+
+    function createTooltip() {
+      tip = document.createElement('div');
+      tip.id = "word-meaning-tip";
+      tip.setAttribute('role', 'tooltip');
+      tip.className = "fixed bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600 text-sm rounded-md px-3 py-2 shadow-lg pointer-events-none whitespace-normal w-max min-w-[12rem] break-words z-50";
+      tip.style.maxWidth = "min(40rem, calc(100vw - 16px))";
+      tip.hidden = true; // show/hide with .hidden
+      document.body.appendChild(tip);
+    }
+
+    function positionTo(el) {
+      const margin = (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 12 : 8;
+
+      // Visual viewport-aware fixed positioning (handles zoom/pan on mobile)
       const vv = window.visualViewport;
-      const vWidth = vv ? vv.width : window.innerWidth;
-      const vHeight = vv ? vv.height : window.innerHeight;
+      const vx = vv ? vv.offsetLeft : 0;
+      const vy = vv ? vv.offsetTop : 0;
+      const vw = vv ? vv.width : window.innerWidth;
+      const vh = vv ? vv.height : window.innerHeight;
 
-      tip.style.position = 'fixed';
-      tip.style.maxWidth = Math.min(640, vWidth - margin * 2) + 'px';
-      tip.classList.remove('opacity-0', 'invisible');
+      // Show to measure
+      tip.hidden = false;
+      const r = tip.getBoundingClientRect();
+      const a = el.getBoundingClientRect();
 
-      // Measure after making visible
-      const rect = tip.getBoundingClientRect();
+      // Try above centered
+      let left = a.left + a.width / 2 - r.width / 2;
+      let top = a.top - r.height - margin;
 
-      // Default: above, centered
-      let left = anchorRect.left + anchorRect.width / 2 - rect.width / 2;
-      let top = anchorRect.top - rect.height - margin;
+      // Clamp horizontally
+      left = Math.max(margin, Math.min(left, vw - r.width - margin));
 
-      // Horizontal clamp within visual viewport
-      left = Math.max(margin, Math.min(left, vWidth - rect.width - margin));
+      // If no room above, go below; clamp to bottom
+      if (top < margin) top = a.bottom + margin;
+      if (top + r.height > vh - margin) top = Math.max(margin, vh - r.height - margin);
 
-      // If not enough room above, place below; also keep within bottom edge
-      if (top < margin) top = anchorRect.bottom + margin;
-      if (top + rect.height > vHeight - margin) top = Math.max(margin, vHeight - rect.height - margin);
-
-      tip.style.left = left + 'px';
-      tip.style.top = top + 'px';
-      tip.style.transform = 'none';
+      tip.style.left = (vx + left) + 'px';
+      tip.style.top = (vy + top) + 'px';
     }
-    function showTooltip(wrapper) {
-      const tip = wrapper.querySelector('.tooltip-text');
-      if (!tip) return;
-      const a = wrapper.getBoundingClientRect();
-      positionTooltipFixed(tip, a);
-      wrapper.dataset.open = '1';
+
+    function openTip(w) {
+      current = w;
+      tip.textContent = `${w.dataset.meaning} (${w.dataset.n})`;
+      positionTo(w);
+      tip.hidden = false;
+      tip.setAttribute('aria-hidden', 'false');
+      w.setAttribute('aria-describedby', 'word-meaning-tip');
     }
-    function hideTooltip(wrapper) {
-      const tip = wrapper.querySelector('.tooltip-text');
-      if (!tip) return;
-      tip.classList.add('opacity-0', 'invisible');
-      tip.style.left = tip.style.top = tip.style.transform = tip.style.position = '';
-      delete wrapper.dataset.open;
+
+    function hideTip() {
+      if (current) current.removeAttribute('aria-describedby');
+      tip.hidden = true;
+      tip.setAttribute('aria-hidden', 'true');
+      current = null;
     }
 
     function attachHandlers() {
-      // Delegate for performance (works for all words)
       const app = document.getElementById('app');
-      app.addEventListener('mouseenter', e => {
-        const w = e.target.closest('.tooltip-wrapper');
+
+      // Open on hover
+      app.addEventListener('pointerover', e => {
+        const w = e.target.closest('.word');
         if (!w) return;
-        if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
-        requestAnimationFrame(() => { requestAnimationFrame(() => { showTooltip(w); currentOpen = w; }); });
-      }, true);
-      app.addEventListener('mousemove', e => {
-        const w = e.target.closest('.tooltip-wrapper');
-        if (w) {
-          if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
-          showTooltip(w);
-          currentOpen = w;
-        } else if (currentOpen) {
-          hideTooltip(currentOpen);
-          currentOpen = null;
-        }
+        if (current !== w) openTip(w);
       });
-      app.addEventListener('mouseleave', e => {
-        if (currentOpen) { hideTooltip(currentOpen); currentOpen = null; }
-      }, true);
-      // Touch/click
-      app.addEventListener('touchstart', e => {
-        const w = e.target.closest('.tooltip-wrapper');
-        if (!w) return; e.stopPropagation();
-        if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
-        showTooltip(w); currentOpen = w;
-      }, { passive: true });
-      app.addEventListener('click', e => {
-        const w = e.target.closest('.tooltip-wrapper');
-        if (!w) return; e.stopPropagation();
-        if (currentOpen && currentOpen !== w) hideTooltip(currentOpen);
-        showTooltip(w); currentOpen = w;
-        if (!w) return; e.stopPropagation(); showTooltip(w);
+
+      // Close when pointer leaves the current word or the app entirely
+      app.addEventListener('pointerout', e => {
+        // If leaving the #app entirely
+        if (!e.currentTarget.contains(e.relatedTarget)) { hideTip(); return; }
+        // If leaving the current word
+        const w = e.target.closest('.word');
+        if (w && w === current && !w.contains(e.relatedTarget)) hideTip();
       });
-      document.addEventListener('click', () => {
-        document.querySelectorAll('.tooltip-wrapper').forEach(hideTooltip);
-        currentOpen = null;
+
+      // Tap/click to open (and stop the document handler from immediately closing it)
+      app.addEventListener('pointerdown', e => {
+        const w = e.target.closest('.word');
+        if (!w) return;
+        e.stopPropagation();
+        openTip(w);
       });
-      document.addEventListener('touchstart', () => {
-        document.querySelectorAll('.tooltip-wrapper').forEach(hideTooltip);
-        currentOpen = null;
-      }, { passive: true });
-      window.addEventListener('resize', () => {
-        document.querySelectorAll('.tooltip-wrapper').forEach(hideTooltip);
-        currentOpen = null;
-      });
-      // On mobile zoom/pan, visual viewport changes; update/open tooltip position
+
+      // Click/tap anywhere else to close
+      document.addEventListener('pointerdown', hideTip);
+
+      // Keep position in sync when things move
+      addEventListener('scroll', () => current && positionTo(current), { capture: true, passive: true });
+      addEventListener('resize', () => current && positionTo(current));
       if (window.visualViewport) {
-        visualViewport.addEventListener('resize', () => {
-          if (currentOpen) showTooltip(currentOpen);
-        });
-        visualViewport.addEventListener('scroll', () => {
-          if (currentOpen) showTooltip(currentOpen);
-        });
+        visualViewport.addEventListener('resize', () => current && positionTo(current));
+        visualViewport.addEventListener('scroll', () => current && positionTo(current));
       }
+
+      // Keyboard a11y
+      app.addEventListener('focusin', e => {
+        const w = e.target.closest('.word'); if (w) openTip(w);
+      });
+      app.addEventListener('focusout', () => hideTip());
+      app.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
     }
 
     function render() {
@@ -178,11 +177,13 @@
                      focus-visible:outline-offset-2 focus-visible:outline-current
                      dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
             >https://github.com/shreevatsa/word-split-sahasranama</a>.</p></footer>`;
-
-      attachHandlers();
     }
 
-    document.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('DOMContentLoaded', () => {
+      createTooltip();
+      render();
+      attachHandlers();
+    });
   </script>
 </body>
 
