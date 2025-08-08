@@ -64,7 +64,7 @@ const data = [
         ],
         [
           "bhūtabhṛd",
-          "Būtabhṛd: One who supports or sustains or governs the universe.",
+          "Bhūtabhṛd: One who supports or sustains or governs the universe.",
           6
         ],
         [
@@ -92,7 +92,7 @@ const data = [
   },
   {
     "dev": "पूतात्मा परमात्मा च मुक्तानां परमा गतिः ।  \nअव्ययः पुरुषः साक्षी क्षेत्रज्ञोऽक्षर एव च ॥ २॥",
-    "translitCanonical": "pūtātmā paramātmā ca muktānāṁ paramā gatiḥ,  \navyayaḥ puruṣaḥ sākṣī kṣetrajñōkṣara eva ca. (2)",
+    "translitCanonical": "pūtātmā paramātmā ca muktānāṁ paramā gatiḥ,  \navyayaḥ puruṣaḥ sākṣī kṣetrajñō'kṣara eva ca. (2)",
     "lines": [
       [
         [
@@ -140,7 +140,7 @@ const data = [
           16
         ],
         [
-          "kṣara",
+          "'kṣara",
           "Akṣara: He who is without destruction.",
           17
         ],
@@ -183,7 +183,7 @@ const data = [
         " ",
         [
           "śrīmān",
-          "Śrimān: One on whose chest the goddess Shri always dwells.",
+          "Śrīmān: One on whose chest the goddess Shri always dwells.",
           22
         ],
         " ",
@@ -229,7 +229,7 @@ const data = [
         " ",
         [
           "sthāṇur",
-          "Sthāṇur: One who is steady, immovable and changeless.",
+          "Sthāṇuḥ: One who is steady, immovable and changeless.",
           28
         ],
         [
@@ -276,7 +276,7 @@ const data = [
         ],
         [
           "īśvaraḥ",
-          "Iśvaraḥ: One who has unlimited lordliness or power over all things.",
+          "Īśvaraḥ: One who has unlimited lordliness or power over all things.",
           36
         ],
         ". (4)",
@@ -323,7 +323,7 @@ const data = [
       [
         [
           "anādinidhanō",
-          "Anāndi-nidhanaḥ: The one existence that has neither birth nor death.",
+          "Anādi-nidhanaḥ: The one existence that has neither birth nor death.",
           42
         ],
         " ",
@@ -650,7 +650,7 @@ const data = [
         ],
         [
           " saṁvatsarō",
-          "Saṁvasaraḥ: As Time is a from of Vishnu, He is called Samvasara or a year.",
+          "Saṁvatsaraḥ: As Time is a from of Vishnu, He is called Samvatsara or a year.",
           91
         ],
         [
@@ -706,7 +706,7 @@ const data = [
         ],
         [
           "acyutaḥ",
-          "Achyutaḥ: One who never lost and will never lose his inherent nature and powers.,",
+          "Acyutaḥ: One who never lost and will never lose his inherent nature and powers.,",
           100
         ]
       ],
@@ -787,7 +787,7 @@ const data = [
         ],
         [
           " vṛṣākṛtiḥ",
-          "Vṛṣāakṛtiḥ: One who takes form for the sake of Vrushas or Dharma.",
+          "Vṛṣākṛtiḥ: One who takes form for the sake of Vrushas or Dharma.",
           113
         ],
         ". (12)",
@@ -872,7 +872,7 @@ const data = [
         ],
         [
           "viṣvaksenō",
-          "Viṣvakśenaḥ: He before whom all Asura armies get scattered.",
+          "Viṣvaksenaḥ: He before whom all Asura armies get scattered.",
           125
         ],
         [
@@ -931,7 +931,7 @@ const data = [
         ],
         [
           " surādhyakṣō",
-          "Surākādhyakṣaḥ: One who is the overlord of the protecting Divinities of all regions.",
+          "Surādhyakṣaḥ: One who is the overlord of the protecting Divinities of all regions.",
           134
         ],
         [
@@ -981,7 +981,7 @@ const data = [
       [
         [
           "bhrājiṣṇur",
-          "141. Bhrājiṣṇuḥ: One who is pure luminosity.",
+          "Bhrājiṣṇuḥ: One who is pure luminosity.",
           141
         ],
         [
@@ -1208,7 +1208,7 @@ const data = [
       [
         [
           "anirdeśyavapuḥ",
-          "Anirdeśya-vapuḥ: One who cannot be indicated to another as: 'He is this', because He cannot be objectively known.",
+          "Anirdeśya-vapuḥ: One who cannot be indicated to another as 'He is this', because He cannot be objectively known.",
           177
         ],
         [
@@ -1395,7 +1395,7 @@ const data = [
         ],
         [
           " śāstā",
-          "Śasta: One who instructs and directs all through the scriptures.",
+          "Śāstā: One who instructs and directs all through the scriptures.",
           206
         ],
         [
@@ -1416,7 +1416,7 @@ const data = [
   },
   {
     "dev": "गुरुर्गुरुतमो धाम सत्यः सत्यपराक्रमः ।  \nनिमिषोऽनिमिषः स्रग्वी वाचस्पतिरुदारधीः ॥ २३॥",
-    "translitCanonical": "gururgurutamō dhāmaḥ satyaḥ satyaparākramaḥ,  \nnimiṣō nimiṣaḥ sragvī vācaspatirudāradhīḥ. (23)",
+    "translitCanonical": "gururgurutamō dhāmaḥ satyaḥ satyaparākramaḥ,  \nnimiṣō 'nimiṣaḥ sragvī vācaspatirudāradhīḥ. (23)",
     "lines": [
       [
         [
@@ -1453,7 +1453,7 @@ const data = [
           214
         ],
         [
-          " nimiṣaḥ",
+          " 'nimiṣaḥ",
           "Animiṣaḥ: One who is ever awake.",
           215
         ],
@@ -1544,7 +1544,7 @@ const data = [
       [
         [
           "āvartanō",
-          "Āvrtanaḥ: One who whirls round and round the Samsara-chakra, the wheel of Samsara or worldy existence.",
+          "Āvartanaḥ: One who whirls round and round the Samsara-chakra, the wheel of Samsara or worldy existence.",
           228
         ],
         [
@@ -1662,16 +1662,16 @@ const data = [
   },
   {
     "dev": "असङ्ख्येयोऽप्रमेयात्मा विशिष्टः शिष्टकृच्छुचिः ।  \nसिद्धार्थः सिद्धसङ्कल्पः सिद्धिदः सिद्धिसाधनः ॥ २७॥",
-    "translitCanonical": "asaṅkhyeyō’prameyātmā viśiṣṭaḥ śiṣṭakṛcchuciḥ,  \nsiddhārthaḥ siddhasaṅkalpaḥ siddhidaḥ siddhisādhanaḥ. (27)",
+    "translitCanonical": "asaṅkhyeyō'prameyātmā viśiṣṭaḥ śiṣṭakṛcchuciḥ,  \nsiddhārthaḥ siddhasaṅkalpaḥ siddhidaḥ siddhisādhanaḥ. (27)",
     "lines": [
       [
         [
-          "asaṅkhyeyō’",
+          "asaṅkhyeyō",
           "Asaṅkhyeyaḥ: One who has no Sankhya or differences of name and form.",
           247
         ],
         [
-          "prameyātmā",
+          "'prameyātmā",
           "Aprameyātmā: One whose nature cannot be grasped by any of the means of knowledge.",
           248
         ],
@@ -2492,7 +2492,7 @@ const data = [
   },
   {
     "dev": "उद्भवः क्षोभणो देवः श्रीगर्भः परमेश्वरः ।  \nकरणं कारणं कर्ता विकर्ता गहनो गुहः ॥ ४१॥",
-    "translitCanonical": "udbhavaḥ, kṣōbhaṇō devaḥ śrīgarbhaḥ parameśvaraḥ,  \nkaraṇaṁ kāraṇaṁ kartā vikartā gahanō guhaḥ. (41)",
+    "translitCanonical": "udbhavaḥ kṣōbhaṇō devaḥ śrīgarbhaḥ parameśvaraḥ,  \nkaraṇaṁ kāraṇaṁ kartā vikartā gahanō guhaḥ. (41)",
     "lines": [
       [
         [
@@ -2501,7 +2501,7 @@ const data = [
           373
         ],
         [
-          ", kṣōbhaṇō",
+          " kṣōbhaṇō",
           "Kṣōbhaṇaḥ: One who at the time of creation entered into the Purusha and Prakriti and caused agitation.",
           374
         ],
@@ -3186,7 +3186,7 @@ const data = [
       [
         [
           "avijñātā",
-          "Aviñātā: One who is without the attributes of a Jiva or vigyata like sense of agency, etc.",
+          "Avijñātā: One who is without the attributes of a Jiva or vigyata like sense of agency, etc.",
           482
         ],
         [
@@ -5564,7 +5564,7 @@ const data = [
   },
   {
     "dev": "भारभृत् कथितो योगी योगीशः सर्वकामदः ।  \nआश्रमः श्रमणः क्षामः सुपर्णो वायुवाहनः ॥ ९१॥",
-    "translitCanonical": "bhārabhṛt kathitō yōgī yōgīśaḥ sarvakāmadaḥ,  \nāśramaḥ śramaṇaḥ, kṣāmaḥ suparṇō vāyuvāhanaḥ. (91)",
+    "translitCanonical": "bhārabhṛt kathitō yōgī yōgīśaḥ sarvakāmadaḥ,  \nāśramaḥ śramaṇaḥ kṣāmaḥ suparṇō vāyuvāhanaḥ. (91)",
     "lines": [
       [
         [
@@ -5606,7 +5606,7 @@ const data = [
           853
         ],
         [
-          ", kṣāmaḥ",
+          " kṣāmaḥ",
           "Kṣāmaḥ: He who brings about the decline of all beings.",
           854
         ],
@@ -6002,7 +6002,7 @@ const data = [
   },
   {
     "dev": "अक्रूरः पेशलो दक्षो दक्षिणः क्षमिणांवरः ।  \nविद्वत्तमो वीतभयः पुण्यश्रवणकीर्तनः ॥ ९८॥",
-    "translitCanonical": "akrūraḥ peśalō dakṣō dakṣiṇaḥ, kṣamiṇāṁ varaḥ,  \nvidvattamō vītabhayaḥ puṇyaśravaṇakīrtanaḥ. (98)",
+    "translitCanonical": "akrūraḥ peśalō dakṣō dakṣiṇaḥ kṣamiṇāṁ varaḥ,  \nvidvattamō vītabhayaḥ puṇyaśravaṇakīrtanaḥ. (98)",
     "lines": [
       [
         [
@@ -6026,7 +6026,7 @@ const data = [
           918
         ],
         [
-          ", kṣamiṇāṁ varaḥ",
+          " kṣamiṇāṁ varaḥ",
           "Kṣamiṇāṁ varaḥ: The greatest among the patient ones, because He is more patient than all Yogis noted for patience.",
           919
         ],
