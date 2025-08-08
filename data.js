@@ -6605,14 +6605,14 @@ const data = [
     ]
   },
   {
-    "dev": "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥ ३३॥",
-    "translitCanonical": "kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,\nkaromi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)\nWhatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.",
+    "dev": "कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।\nकरोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥",
+    "translitCanonical": "kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,\nkaromi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi.\nWhatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.",
     "lines": [
       [
         "kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,"
       ],
       [
-        "karomi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)"
+        "karomi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi."
       ],
       [
         "Whatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.",
