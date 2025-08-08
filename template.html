@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vishnu Sahasranama</title>
   <!-- <script src="https://cdn.tailwindcss.com/3.4.17"></script> -->
-  <style>
+  <!-- Pasting the entire ~400K of Tailwind here, sorry. -->
+  <script>
     /* [[[cog
-    print(open('dist/tailwind.3.4.17.css').read(), end='')
+     import urllib.request
+     print(urllib.request.urlopen('https://cdn.tailwindcss.com/3.4.17').read().decode('utf-8'))
     ]]] */
-    /* [[[end]]] */
-  </style>
+    // [[[end]]]
+  </script>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -27,14 +29,12 @@
     let idx = 0;
     let currentOpen = null; // keep at most one tooltip visible
 
-    // Returns the HTML for a coloured word (`display`) with a floating tooltip (`meaning` followed by `n`).
+    // IMPORTANT: no newlines/extra spaces inside the returned HTML — because the
+    // container uses `whitespace-pre-wrap`, any whitespace in the template would
+    // render as visible line breaks. So keep this strictly single-line.
     function word(display, meaning, n) {
       const c = colors[idx++ % colors.length];
-      // Escaping for HTML contexts requires escaping only < and "ambiguous ampersands".
-      const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-      // IMPORTANT: no newlines/extra spaces inside the returned HTML — because the
-      // container uses `whitespace-pre-wrap`, any whitespace in the template would
-      // render as visible line breaks. So keep this strictly single-line.
+      const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       return `<span class="relative inline-block tooltip-wrapper"><span class="font-bold" style="color:${c};cursor:pointer;">${display}</span><span class="tooltip-text absolute -top-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white dark:bg-gray-700 dark:border dark:border-gray-600 text-sm rounded-md px-3 py-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition pointer-events-none whitespace-normal w-max min-w-[12rem] break-words z-50" style="max-width:min(40rem,calc(100vw - 16px));">${esc(meaning)} (${n})</span></span>`;
     }
 
@@ -171,13 +171,7 @@
           </p>
         </header>
         ${cards}
-        <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8"><p>Single HTML file with inlined dependencies. Source code at <a
-              href="https://github.com/shreevatsa/word-split-sahasranama"
-              class="text-blue-600 underline underline-offset-2 hover:decoration-2 hover:text-blue-700
-                     visited:text-purple-600 focus-visible:outline focus-visible:outline-2
-                     focus-visible:outline-offset-2 focus-visible:outline-current
-                     dark:text-sky-400 dark:hover:text-sky-300 dark:visited:text-violet-400"
-            >https://github.com/shreevatsa/word-split-sahasranama</a>.</p></footer>`;
+        <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8"><p>Single-file index.html with inlined dependencies. Source code at <a href="https://github.com/shreevatsa/word-split-sahasranama">https://github.com/shreevatsa/word-split-sahasranama</a>.</p></footer>`;
 
       attachHandlers();
     }

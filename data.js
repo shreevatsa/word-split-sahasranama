@@ -5490,7 +5490,7 @@ const data = [
   },
   {
     "dev": "अणुर्बृहत्कृशः स्थूलो गुणभृन्निर्गुणो महान् ।  \nअधृतः स्वधृतः स्वास्यः प्राग्वंशो वंशवर्धनः ॥ ९०॥",
-    "translitCanonical": "aṇurbṛhatkṛśaḥ sthūlō guṇabhṛnnirguṇō mahān,  \nadhṛtassvadhṛtassvāsyaḥ prāgvaṁśō vaṁśavardhanaḥ. (90)",
+    "translitCanonical": "aṇurbṛhatkṛśaḥ sthūlō guṇabhṛnnirguṇō mahān,|  \nadhṛtassvadhṛtassvāsyaḥ prāgvaṁśō vaṁśavardhanaḥ. (90)",
     "lines": [
       [
         [
@@ -5528,7 +5528,7 @@ const data = [
           "Mahān: The great.",
           841
         ],
-        ",  "
+        ",|  "
       ],
       [
         [
@@ -5628,7 +5628,7 @@ const data = [
   },
   {
     "dev": "धनुर्धरो धनुर्वेदो दण्डो दमयिता दमः ।  \nअपराजितः सर्वसहो नियन्ताऽनियमोऽयमः ॥ ९२॥",
-    "translitCanonical": "dhanurdharō dhanurvedō daṅḍō damayitā damaḥ,  \naparājitassarvasahō niyantā 'niyamō 'yamaḥ. (92)",
+    "translitCanonical": "dhanurdharō dhanurvedō daṅḍō damayitā damaḥ,  \naparājitassarvasahō niyantā 'niyamō yamaḥ. (92)",
     "lines": [
       [
         [
@@ -5680,7 +5680,7 @@ const data = [
           865
         ],
         [
-          " 'yamaḥ",
+          " yamaḥ",
           "Ayamaḥ: One on whom Yama has no control, that is one who has no death.",
           866
         ],

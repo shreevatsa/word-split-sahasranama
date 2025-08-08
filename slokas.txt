@@ -1615,7 +1615,7 @@ kṛśaḥ=837. Kṛśaḥ: One who is non-material.
  guṇabhṛn=839. Guṇa-bhṛt: The support of the Gunas. He is so called because in the creative cycle of creation, sustentation, and dissolution, He is the support of the Gunas – Satva, Rajas and Tamas – with which these functions are performed.
 nirguṇō=840. Nirguṇaḥ: One who is without the Gunas of Prakruti.
  mahān=841. Mahān: The great.
-,  
+,|  
 ---
 adhṛtas=842. Adhṛutaḥ: One who, being the support of all supporting agencies, like Pruthvi (Earth), is not supported by anything external to Him.
 svadhṛtas=843. Svadhṛtaḥ: One supported by oneself.
@@ -1657,7 +1657,7 @@ aparājitas=862. Aparājitaḥ: One who is never defeated by enemies.
 sarvasahō=863. Sarvasahaḥ: One who is expert in all Karmas (works).
  niyantā=864. Niyantā: One who appoints every person to his respective duties.
  'niyamō=865. Aniyamaḥ: One on whom there is no enforcement of any law, or above whom there can be no overlord to enforce anything, as He is the controller of everything.
- 'yamaḥ=866. Ayamaḥ: One on whom Yama has no control, that is one who has no death.
+ yamaḥ=866. Ayamaḥ: One on whom Yama has no control, that is one who has no death.
 . (92)
 
 
