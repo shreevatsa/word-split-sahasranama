@@ -26,7 +26,7 @@ bhūtabhavyabhavatprabhuḥ=4. Bhūta-bhavya-bhavat-prabhuḥ: The one who is th
 ,  
 ---
 bhūtakṛd=5. Bhūtakṛd: The creator and destroyer of all existences in the universe.
-bhūtabhṛd=6. Būtabhṛd: One who supports or sustains or governs the universe.
+bhūtabhṛd=6. Bhūtabhṛd: One who supports or sustains or governs the universe.
 bhāvō=7. Bhāvaḥ: Pure existence.
  
 bhūtātmā=8. Bhūtātmā: The essence of all beings.
@@ -53,7 +53,7 @@ puruṣaḥ=14. Puruṣaḥ: One who abides in the body or pura.
 sākṣī=15. Sākṣī: One who witnesses everything.
  
 kṣetrajñō=16. Kṣetrajñaḥ: The knower of the field or body.
-kṣara=17. Akṣara: He who is without destruction.
+'kṣara=17. Akṣara: He who is without destruction.
  eva ca. (2)
 
 
@@ -69,7 +69,7 @@ pradhānapuruṣeśvaraḥ=20. Pradhāna-puruṣeśvaraḥ: The master of pradha
 ---
 nārasiṁhavapuḥ=21. Nārasiṁha-vapuḥ: One in whom the bodies of a man and a lion are combined.
  
-śrīmān=22. Śrimān: One on whose chest the goddess Shri always dwells.
+śrīmān=22. Śrīmān: One on whose chest the goddess Shri always dwells.
  
 keśavaḥ=23. Keśavaḥ: One whose Kesa or locks are beautiful.
  
@@ -86,7 +86,7 @@ sarvaḥ=25. Sarvaḥ: The omniscient source of all existence.
  
 śivaḥ=27. Śivaḥ: One pure.
  
-sthāṇur=28. Sthāṇur: One who is steady, immovable and changeless.
+sthāṇur=28. Sthāṇuḥ: One who is steady, immovable and changeless.
 bhūtādir=29. Bhūtādiḥ: Source of all elements or existing things.
 nidhiravyayaḥ=30. Nidhir-avyayaḥ: The changeless and indestructible Being in whom the whole universe becomes merged and remains in seminal condition at the time of Pralaya or cosmic dissolution.
 ,  
@@ -100,7 +100,7 @@ bhartā=33. Bhartā: One who supports the universe as its substratum.
 prabhavaḥ=34. Prabhavaḥ: One from whom all the great elements have their birth. Or one who has exalted births as incarnations.
  
 prabhur=35. Prabhuḥ: One who is an adept in all rites.
-īśvaraḥ=36. Iśvaraḥ: One who has unlimited lordliness or power over all things.
+īśvaraḥ=36. Īśvaraḥ: One who has unlimited lordliness or power over all things.
 . (4)
 
 
@@ -117,7 +117,7 @@ puṣkarākṣō=40. Puṣkarākṣaḥ: One who has eyes resembling the petals 
 mahāsvanaḥ=41. Mahāsvanaḥ: One from whom comes the great sound – the Veda.
 ,  
 ---
-anādinidhanō=42. Anāndi-nidhanaḥ: The one existence that has neither birth nor death.
+anādinidhanō=42. Anādi-nidhanaḥ: The one existence that has neither birth nor death.
  
 dhātā=43. Dhātā: One who is the support of the universe.
  
@@ -218,7 +218,7 @@ sureśaḥ=85. Sureśaḥ: The lord of the Suras or Devas. It can also mean the 
 ,  
 ---
 ahaḥ=90. Ahaḥ: Luminous one.
- saṁvatsarō=91. Saṁvasaraḥ: As Time is a from of Vishnu, He is called Samvasara or a year.
+ saṁvatsarō=91. Saṁvatsaraḥ: As Time is a from of Vishnu, He is called Samvatsara or a year.
  vyālaḥ=92. Vyālaḥ: Being ungraspable like a serpent, He is called Vyalah.
  pratyayas=93. Pratyayaḥ: One who is of the nature of Pratiti or Prajna (consciousness).
 sarvadarśanaḥ=94. Sarva-darśanaḥ: One with eyes everywhere. As the Lord has assumed all forms, the eye-sight of all beings is His.
@@ -233,7 +233,7 @@ ajaḥ=95. Ajah: One who has no birth.
  siddhaḥ=97. Siddhaḥ: One ever established in one's own nature.
  siddhiḥ=98. Siddhiḥ: One who is of the nature of Consciousness in all.
  sarvādir=99. Sarvādiḥ: One who is the first cause of all elements.
-acyutaḥ=100. Achyutaḥ: One who never lost and will never lose his inherent nature and powers.,  
+acyutaḥ=100. Acyutaḥ: One who never lost and will never lose his inherent nature and powers.,  
 ---
 vṛṣākapir=101. Vṛṣākapiḥ: One who shwers all objects of desire.
 ameyātmā=102. Ameyātmā: One whose form or nature cannot be measured and determined.
@@ -255,7 +255,7 @@ vasumanāḥ=105. Vasumanāḥ: The term Vasu means wealth or riches. Here it in
 amōghaḥ=110. Amoghaḥ: One whose worship will never go in vain, but will bear ample fruits.
  puṇḍarīkākṣō=111. Puṇḍarīkākṣaḥ: One who has pervaded, i.e. is realized in, the lotus of the heart. Or One whose eyes resemble the petals of a lotus.
  vṛṣakarmā=112. Vṛṣakarmā: One whose actions are according to Vrushas i.e. Dharma.
- vṛṣākṛtiḥ=113. Vṛṣāakṛtiḥ: One who takes form for the sake of Vrushas or Dharma.
+ vṛṣākṛtiḥ=113. Vṛṣākṛtiḥ: One who takes form for the sake of Vrushas or Dharma.
 . (12)
 
 
@@ -281,7 +281,7 @@ varārōhō=121. Varārohaḥ: He whose lap gives the highest blessings.
 
 sarvagaḥ=123. Sarvagaḥ: One who pervades everything, being of the nature of their material cause.
  sarvavidbhānur=124. Sarvavid-bhānuḥ: One who is omniscient and illumines everything.
-viṣvaksenō=125. Viṣvakśenaḥ: He before whom all Asura armies get scattered.
+viṣvaksenō=125. Viṣvaksenaḥ: He before whom all Asura armies get scattered.
  janārdanaḥ=126. Janārdanaḥ: One who inflicts suffering on evil men.
 ,  
 ---
@@ -298,7 +298,7 @@ avyaṅgō=129. Avyaṅgaḥ: One who is self-fulfilled by knowledge and other g
 चतुरात्मा चतुर्व्यूहश्चतुर्दंष्ट्रश्चतुर्भुजः ॥ १५॥
 
 lōkādhyakṣaḥ=133. Lokādhyakṣaḥ: He who witnesses the whole universe.
- surādhyakṣō=134. Surākādhyakṣaḥ: One who is the overlord of the protecting Divinities of all regions.
+ surādhyakṣō=134. Surādhyakṣaḥ: One who is the overlord of the protecting Divinities of all regions.
  dharmādhyakṣaḥ=135. Dharmādhyakṣaḥ: One who directly sees the merits (Dharma) and demerits (Adharma) of beings by bestwing their due rewards on all beings.
  kṛtākṛtaḥ=136. Kṛtākṛtaḥ: One who is an effect in the form of the worlds and also a non-effect as their cause.
 ,  
@@ -314,7 +314,7 @@ caturbhujaḥ=140. Chatur-bhujaḥ: One with four arms.
 भ्राजिष्णुर्भोजनं भोक्ता सहिष्णुर्जगदादिजः ।  
 अनघो विजयो जेता विश्वयोनिः पुनर्वसुः ॥ १६॥
 
-bhrājiṣṇur=141. 141. Bhrājiṣṇuḥ: One who is pure luminosity.
+bhrājiṣṇur=141. Bhrājiṣṇuḥ: One who is pure luminosity.
 bhōjanaṁ=142. Bhojanam: Prakruti or Maya is called Bhojanam or what is enjoyed by the Lord.
  
 bhōktā=143. Bhoktā: As he, purusha, enjoys the prakruti, He is called the enjoyer or Bhokta.
@@ -378,7 +378,7 @@ mahāvīryō=174. Mahāvīryaḥ: The most powerful one, because Ignorance which
 mahādyutiḥ=176. Mahādyutiḥ: One who is intensely brilliant both within and without.
 ,  
 ---
-anirdeśyavapuḥ=177. Anirdeśya-vapuḥ: One who cannot be indicated to another as: 'He is this', because He cannot be objectively known.
+anirdeśyavapuḥ=177. Anirdeśya-vapuḥ: One who cannot be indicated to another as 'He is this', because He cannot be objectively known.
  śrīmān=178. Śrīmān: One endowed with greatness of every kind.
 ameyātmā=179. Ameyātmā: The Spirit with intelligence that cannot be measured by any one.
  mahādridhṛk=180. Mahādridhṛk: One who held up the great mountain 'Mandara' at the time of the churning of the Milk Ocean and also Govardhana in his Krishna incarnation.
@@ -431,7 +431,7 @@ amṛtyuḥ=198. Amṛtyuḥ: One who is without death or its cause.
 ---
 ajō=204. Ajaḥ: The root 'Aj' has got as meanings both 'go' and 'throw'. So the name means One who goes into the hearts of devotees or One who throws the evil Asuras to a distance, i.e. destroys them.
  durmarṣaṇaḥ=205. Durmarṣaṇaḥ: One whose might the Asuras cannot bear.
- śāstā=206. Śasta: One who instructs and directs all through the scriptures.
+ śāstā=206. Śāstā: One who instructs and directs all through the scriptures.
  viśrutātmā=207. Vishrutatma: One who is specially known through signifying terms like Truth, Knowledge, etc.
  surārihā=208. Surārihā: One who destroys the enemies of Suras or Devas.
 . (22)
@@ -448,7 +448,7 @@ gurutamō=210. Gurutamaḥ: One who is the teacher of all forms of knowledge.
 ,  
 ---
 nimiṣō=214. Nimiṣaḥ: One whose eye-lids are closed in Yoga-nidra.
- nimiṣaḥ=215. Animiṣaḥ: One who is ever awake.
+ 'nimiṣaḥ=215. Animiṣaḥ: One who is ever awake.
  sragvī=216. Sragvī: One who has on Him the necklace called Vaijayanti, which is strung with the subtle aspects of the five elements.
  vācaspatirudāradhīḥ=217. Vācaspatir-udāradhīḥ: Being the master of Vak or word i.e. knowledge, He is called so. As his intellect perceives everything, He is Udaradhih. Both these epithets together constitute one name.
 . (23)
@@ -475,7 +475,7 @@ sahasramūrdhā=224. Sahasramūrdhā: One with a thousand, i.e. innumerable, hea
 आवर्तनो निवृत्तात्मा संवृतः सम्प्रमर्दनः ।  
 अहः संवर्तको वह्निरनिलो धरणीधरः ॥ २५॥
 
-āvartanō=228. Āvrtanaḥ: One who whirls round and round the Samsara-chakra, the wheel of Samsara or worldy existence.
+āvartanō=228. Āvartanaḥ: One who whirls round and round the Samsara-chakra, the wheel of Samsara or worldy existence.
  nivṛttātmā=229. Nivṛttātmā: One whose being is free or untouched by the bondage of Snamsara.
  saṁvṛtaḥ=230. Saṁvṛtaḥ: One who is covered by all-covering Avidya or ignorance.
  saṁpramardanaḥ=231. Sampramardanaḥ: One who delivers destructive blows on all beings through His Vibhutis (power manifestation like Rudra, Yama etc.).
@@ -510,8 +510,8 @@ nārāyaṇō=245. Nārāyaṇaḥ: Nara means Atman. Narayana, that is, one hav
 असङ्ख्येयोऽप्रमेयात्मा विशिष्टः शिष्टकृच्छुचिः ।  
 सिद्धार्थः सिद्धसङ्कल्पः सिद्धिदः सिद्धिसाधनः ॥ २७॥
 
-asaṅkhyeyō’=247. Asaṅkhyeyaḥ: One who has no Sankhya or differences of name and form.
-prameyātmā=248. Aprameyātmā: One whose nature cannot be grasped by any of the means of knowledge.
+asaṅkhyeyō=247. Asaṅkhyeyaḥ: One who has no Sankhya or differences of name and form.
+'prameyātmā=248. Aprameyātmā: One whose nature cannot be grasped by any of the means of knowledge.
  viśiṣṭaḥ=249. Viśiṣṭaḥ: One who excels everything.
  śiṣṭakṛc=250. Śiṣṭakṛt: One who commands everything. Or one who protects shishtas or good men.
 chuciḥ=251. Suciḥ: Pure
@@ -753,7 +753,7 @@ amitāśanaḥ=372. Amitāśanaḥ: He who consumes all the worlds at the time o
 करणं कारणं कर्ता विकर्ता गहनो गुहः ॥ ४१॥
 
 udbhavaḥ=373. Udbhavaḥ: One who is the material cause of creation.
-, kṣōbhaṇō=374. Kṣōbhaṇaḥ: One who at the time of creation entered into the Purusha and Prakriti and caused agitation.
+ kṣōbhaṇō=374. Kṣōbhaṇaḥ: One who at the time of creation entered into the Purusha and Prakriti and caused agitation.
  devaḥ=375. Devaḥ: 'Divyati' means sports oneself through creation and other cosmic activities.
  śrīgarbhaḥ=376. Śrīgarbhaḥ: One in whose abdomen (Garbha) Shri or His unique manifestation as Samsara has its existence.
  parameśvaraḥ=377. Parameśvaraḥ: 'Parama' means the supreme. 'Ishvarah' means one who hold sway over all beings.
@@ -944,7 +944,7 @@ kṣaram=480. Kṣaram: All beings subjected to change.
 akṣaram=481. Akṣaram: The changeless one.
 ,  
 ---
-avijñātā=482. Aviñātā: One who is without the attributes of a Jiva or vigyata like sense of agency, etc.
+avijñātā=482. Avijñātā: One who is without the attributes of a Jiva or vigyata like sense of agency, etc.
  sahasrāṁśur=483. Sahasrāṁśuḥ: One with numerous rays, that is the Sun.
 vidhātā=484. Vidhātā: One who is the unique support of all agencies like Ananta who bear the whole universe.
  kṛtalakṣaṇaḥ=485. Kṛtalakṣaṇaḥ: One who is of the nature of conscousness.
@@ -1615,7 +1615,7 @@ kṛśaḥ=837. Kṛśaḥ: One who is non-material.
  guṇabhṛn=839. Guṇa-bhṛt: The support of the Gunas. He is so called because in the creative cycle of creation, sustentation, and dissolution, He is the support of the Gunas – Satva, Rajas and Tamas – with which these functions are performed.
 nirguṇō=840. Nirguṇaḥ: One who is without the Gunas of Prakruti.
  mahān=841. Mahān: The great.
-,|  
+,  
 ---
 adhṛtas=842. Adhṛutaḥ: One who, being the support of all supporting agencies, like Pruthvi (Earth), is not supported by anything external to Him.
 svadhṛtas=843. Svadhṛtaḥ: One supported by oneself.
@@ -1637,7 +1637,7 @@ bhārabhṛt=847. Bhārabhṛt: One who bears the weight of the earth assuming t
 ---
 āśramaḥ=852. Āśramaḥ: One who is the bestower of rest on all who are wandering in the forest of Samsara.
  śramaṇaḥ=853. Śramaṇaḥ: One who brings tribulations to those who live without using their discriminative power.
-, kṣāmaḥ=854. Kṣāmaḥ: He who brings about the decline of all beings.
+ kṣāmaḥ=854. Kṣāmaḥ: He who brings about the decline of all beings.
  suparṇō=855. Suparṇaḥ: The lord who has manifested Himself as the tree of Samsara has excellent leaves (Parna) in the form of Vedic passages (Chandas).
  vāyuvāhanaḥ=856. Vāyuvāhanaḥ: He for fear of whom Vayu (Air) carries all beings.
 . (91)
@@ -1657,7 +1657,7 @@ aparājitas=862. Aparājitaḥ: One who is never defeated by enemies.
 sarvasahō=863. Sarvasahaḥ: One who is expert in all Karmas (works).
  niyantā=864. Niyantā: One who appoints every person to his respective duties.
  'niyamō=865. Aniyamaḥ: One on whom there is no enforcement of any law, or above whom there can be no overlord to enforce anything, as He is the controller of everything.
- yamaḥ=866. Ayamaḥ: One on whom Yama has no control, that is one who has no death.
+ 'yamaḥ=866. Ayamaḥ: One on whom Yama has no control, that is one who has no death.
 . (92)
 
 
@@ -1756,7 +1756,7 @@ akrūraḥ=915. Akrūraḥ: One who is without cruelty.
  peśalō=916. Peśalaḥ: One who is handsome in regard to His actions, mind, word and body.
  dakṣō=917. Dakṣaḥ: One who is fullgrown, strong and does every thing quickly, such a person is Daksha.
  dakṣiṇaḥ=918. Dakṣiṇaḥ: This word is also means the same as the above Nama.
-, kṣamiṇāṁ varaḥ=919. Kṣamiṇāṁ varaḥ: The greatest among the patient ones, because He is more patient than all Yogis noted for patience.
+ kṣamiṇāṁ varaḥ=919. Kṣamiṇāṁ varaḥ: The greatest among the patient ones, because He is more patient than all Yogis noted for patience.
 ,  
 ---
 vidvattamō=920. Vidvattamaḥ: He who has got the unsurpassable and all-inclusive knowledge of everything.
@@ -1912,7 +1912,7 @@ nandakī=994. Nandakī: One who has in His hand the sword known as Nandaka, whic
 ---
 rathāṅgapāṇir=998. Rathāṅga-pāṇiḥ: One in whose hand is a wheel (Chakra).
 akṣōbhyaḥ=999. Akṣobhyaḥ: One who cannot be upset by anything, because He controls all the above-mentioned weapons.
- sarvapraharaṇāyudhaḥ=1000.  Sarva-praharaṇā-yudhaḥ: There is no rule that the Lord has got only the above- mentioned weapons. All things, which can be used for contacting or striking, are His weapons.
+ sarvapraharaṇāyudhaḥ=1000. Sarva-praharaṇā-yudhaḥ: There is no rule that the Lord has got only the above- mentioned weapons. All things, which can be used for contacting or striking, are His weapons.
 . (107)  
 ---
 sarvapraharaṇāyudha oṃ nama iti.
@@ -1939,11 +1939,11 @@ And who is called Vishnu and the Vasudeva.
 
 
 कायेन वाचा मनसेन्द्रियैर्वा बुद्ध्यात्मना वा प्रकृतेः स्वभावात् ।
-करोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥ ३३॥
+करोमि यद्यत् सकलं परस्मै नारायणायेति समर्पयामि ॥
 
 kāyena vācā manasendriyairvā budhyātmanā vā prakṛteḥ svabhāvāt,
 ---
-karomi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi. (33)
+karomi yadyat sakalaṃ parasmai nārāyaṇāyeti samarpayāmi.
 ---
 Whatever I do either by body, speech, mind or sensory organs, either with my personal knowledge or natural trait, I surrender and submit all to that to supreme divine Narayana.
 
